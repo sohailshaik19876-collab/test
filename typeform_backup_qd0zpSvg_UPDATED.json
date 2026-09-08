@@ -2126,9 +2126,28 @@
       "id": "b155ee9e-f20",
       "ref": "1e7deb0d-8152-4f5f-a4a0-6d14070b0e14",
       "title": "Property 1 - Rental income frequency",
-      "type": "short_text",
+      "type": "multiple_choice",
       "validations": {
         "required": false
+      },
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "3hYZx4zusN9e",
+            "ref": "498951b9-182b-4e23-a29d-dd554581fe83",
+            "label": "Monthly"
+          },
+          {
+            "id": "yl0HG5yJVDVr",
+            "ref": "a435d622-23fa-426a-ba91-33cbf61da0c2",
+            "label": "Annual"
+          }
+        ]
       }
     },
     {
@@ -2180,9 +2199,28 @@
       "id": "c9f21bbb-aa9",
       "ref": "29ef27ef-6106-4f24-b852-97a3b90899e1",
       "title": "Property 2 - Rental income frequency",
-      "type": "short_text",
+      "type": "multiple_choice",
       "validations": {
         "required": false
+      },
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "Sz9jiD40zYaF",
+            "ref": "93184c5c-eba9-4e13-a21c-5af0ec700511",
+            "label": "Monthly"
+          },
+          {
+            "id": "mJ5tWOfVPF6B",
+            "ref": "c78dba1f-8d5d-4449-978e-3abf14928d4e",
+            "label": "Annual"
+          }
+        ]
       }
     },
     {
@@ -2234,9 +2272,28 @@
       "id": "0dbb605a-f5d",
       "ref": "0b856657-fe52-49a6-899e-cf491e9f0d78",
       "title": "Property 3 - Rental income frequency",
-      "type": "short_text",
+      "type": "multiple_choice",
       "validations": {
         "required": false
+      },
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "U9S9XEXYdmji",
+            "ref": "8afd9b71-35d8-48f8-9e2f-3bfdc5320f68",
+            "label": "Monthly"
+          },
+          {
+            "id": "qiLVxIkTt74D",
+            "ref": "47c42506-80c3-44d5-87f8-e2559968e942",
+            "label": "Annual"
+          }
+        ]
       }
     },
     {
@@ -2351,18 +2408,76 @@
       "id": "669942c1-cdd",
       "ref": "84e6d934-1564-4849-b64a-51357ae28fd6",
       "title": "Current position of the sale",
-      "type": "short_text",
+      "type": "multiple_choice",
       "validations": {
         "required": false
+      },
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "7n4LyXkWgRWH",
+            "ref": "b14bf0ce-53ad-4c37-bf62-038b17927234",
+            "label": "Not yet marketed"
+          },
+          {
+            "id": "u7dB2NDGrg8o",
+            "ref": "640e9ed2-1887-4205-b873-bf7d48f14b32",
+            "label": "On the market"
+          },
+          {
+            "id": "gE7jMyxkbvcV",
+            "ref": "f03a5405-2b15-431b-a548-a55239e7aaaa",
+            "label": "Offer received"
+          },
+          {
+            "id": "LxMXhSjT4MAZ",
+            "ref": "192f7c21-807c-4bc3-876c-44117638fe8a",
+            "label": "Offer accepted"
+          },
+          {
+            "id": "IBY9eQqkjHWd",
+            "ref": "9391924a-314a-460b-87b0-d4dbdf760453",
+            "label": "Contracts exchanged"
+          }
+        ]
       }
     },
     {
       "id": "93e882d7-4e6",
       "ref": "dbe18b2f-a811-4794-96ee-2031f2e1af6a",
       "title": "Are there any early repayment charges?",
-      "type": "short_text",
+      "type": "multiple_choice",
       "validations": {
         "required": false
+      },
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "3ObXZDIVDbWY",
+            "ref": "9ae7fe3d-18c9-405e-9d12-8e83ed43bf98",
+            "label": "Yes"
+          },
+          {
+            "id": "2qM0on5CvNkv",
+            "ref": "d7c018fb-702b-4e6f-b216-48479d1f1311",
+            "label": "No"
+          },
+          {
+            "id": "gS9xQv666Q1J",
+            "ref": "e00b3e79-0962-42c5-9456-c0168cc51039",
+            "label": "Not known"
+          }
+        ]
       }
     },
     {
@@ -2807,9 +2922,28 @@
       "id": "f507f5f4-bd0",
       "ref": "cbaa7f56-1611-48bc-96d1-b7b23bec7255",
       "title": "Premium frequency",
-      "type": "short_text",
+      "type": "multiple_choice",
       "validations": {
         "required": false
+      },
+      "properties": {
+        "randomize": false,
+        "allow_multiple_selection": false,
+        "allow_other_choice": false,
+        "none_of_the_above": false,
+        "vertical_alignment": true,
+        "choices": [
+          {
+            "id": "oBKxuvnwVpI8",
+            "ref": "087a1d1b-70e9-433e-80ca-74033a6dc93f",
+            "label": "Monthly"
+          },
+          {
+            "id": "AsTWBfOQaq1X",
+            "ref": "ee3d6fdb-0f52-471a-bc9a-7ede13f4574c",
+            "label": "Annual"
+          }
+        ]
       }
     },
     {
