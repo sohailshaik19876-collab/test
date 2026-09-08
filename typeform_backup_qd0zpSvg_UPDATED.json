@@ -3130,34 +3130,6 @@
     },
     {
       "type": "field",
-      "ref": "1c066d54-d9da-42d3-97f0-8a42b6c066fa",
-      "actions": [
-        {
-          "action": "jump",
-          "details": {
-            "to": {
-              "type": "field",
-              "value": "0b99a5c7-4cb3-4669-b197-b19d7b92f0eb"
-            }
-          },
-          "condition": {
-            "op": "is",
-            "vars": [
-              {
-                "type": "field",
-                "value": "361f54d4-5991-48ed-92f3-660f43cc8a85"
-              },
-              {
-                "type": "constant",
-                "value": true
-              }
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "type": "field",
       "ref": "3ce63c97-f454-40f6-8de9-031eb984dc57",
       "actions": [
         {
