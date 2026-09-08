@@ -123,9 +123,30 @@ class FieldBuilder:
             title, "date", properties={"separator": "/", "structure": "DDMMYYYY"}
         )
 
+    def multiple_choice(self, title, labels):
+        """A single-select choice field, matching the form's existing schema."""
+        return self._base(
+            title,
+            "multiple_choice",
+            properties={
+                "randomize": False,
+                "allow_multiple_selection": False,
+                "allow_other_choice": False,
+                "none_of_the_above": False,
+                "vertical_alignment": True,
+                "choices": [
+                    {"id": self._ids.field_id(), "ref": self._ids.ref(), "label": label}
+                    for label in labels
+                ],
+            },
+        )
+
     def question(self, title):
         """Infer a sensible field type from a plain question title."""
-        low = title.strip().lower()
+        key = title.strip()
+        if key in CHOICE_FIELDS:
+            return self.multiple_choice(title, CHOICE_FIELDS[key])
+        low = key.lower()
         gates = (
             "do you own",
             "add another property",
@@ -139,6 +160,19 @@ class FieldBuilder:
         if "date" in low:
             return self.date(title)
         return self.short_text(title)
+
+
+# Questions that must render as proper Typeform choice fields (title -> labels).
+CHOICE_FIELDS = {
+    "Current position of the sale": [
+        "Not yet marketed",
+        "On the market",
+        "Offer received",
+        "Offer accepted",
+        "Contracts exchanged",
+    ],
+    "Are there any early repayment charges?": ["Yes", "No", "Not known"],
+}
 
 
 # The sections to add, expressed as plain titles.
@@ -398,10 +432,30 @@ def validate(original, updated):
                 if target not in top_refs and target not in preexisting_dangling:
                     raise AssertionError(f"logic jumps to unknown field {target}")
 
+    # Count newly added top-level choice fields.
+    original_field_refs = {f["ref"] for f in original["fields"]}
+    choice_fields_added = sum(
+        1
+        for f in updated["fields"]
+        if f["ref"] not in original_field_refs
+        and f.get("type") == "multiple_choice"
+    )
+
+    # Warnings: pre-existing dangling jump targets are carried through untouched.
+    warnings = [
+        f"pre-existing logic jump target not found among top-level fields "
+        f"(left untouched): {ref}"
+        for ref in sorted(preexisting_dangling)
+    ]
+
     return {
         "fields_total": len(updated["fields"]),
         "fields_added": len(updated["fields"]) - len(original["fields"]),
-        "logic_rules": len(updated.get("logic", [])),
+        "logic_rules_total": len(updated.get("logic", [])),
+        "logic_rules_added": len(updated.get("logic", []))
+        - len(original.get("logic", [])),
+        "choice_fields_added": choice_fields_added,
+        "warnings": warnings,
     }
 
 
@@ -421,9 +475,13 @@ def main():
         json.dump(updated, fh, indent=2, ensure_ascii=False)
 
     print(f"Wrote {OUTPUT_FILE}")
-    print(f"  fields: {stats['fields_total']} "
-          f"(+{stats['fields_added']} new)")
-    print(f"  logic rules: {stats['logic_rules']}")
+    print(f"  fields: {stats['fields_total']} (+{stats['fields_added']} new)")
+    print(f"  new choice fields: {stats['choice_fields_added']}")
+    print(f"  logic rules: {stats['logic_rules_total']} "
+          f"(+{stats['logic_rules_added']} new)")
+    if stats["warnings"]:
+        for warning in stats["warnings"]:
+            print(f"  warning: {warning}")
 
 
 if __name__ == "__main__":
